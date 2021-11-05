@@ -44,16 +44,16 @@ def get_sgu_dict(data, username):
             'DATA': datetime.strptime(entry['start'], "%Y-%m-%dT%H:%M:%S-03:00").strftime("%d/%m/%Y"),
             'PROJETO': entry['project'], 
             'CATEGORIA': categ,
-            'ATIVIDADE': entry['description'],  
+            'ATIVIDADE': entry['description'][:50],  
             'OPORTUNIDADE': '', 
-            'HORAS': float(entry['dur'])/3600000, 
+            'HORAS': str(float(entry['dur'])/3600000).replace('.', ','), 
             'USERNAME': username
     })
         
     return entries
 
 def sgu_dict_to_csv(data, filename):
-    DataFrame.from_dict(data).to_csv(filename, index=False)
+    DataFrame.from_dict(data).to_csv(filename, index=False, encoding='ansi', sep=';')
 
 def get_workspace_ids(api_token: str):
     return get('https://api.track.toggl.com/api/v8/workspaces', auth=(api_token, 'api_token')).json()
