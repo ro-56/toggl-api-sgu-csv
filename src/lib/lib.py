@@ -1,28 +1,25 @@
+#!/usr/bin/env python
+
 from requests import get
 from pandas import DataFrame
 from datetime import datetime, timedelta
-import importlib
+from yaml import safe_load, YAMLError
 
-
-def new_func():
-    if importlib.util.find_spec("config"):
-        import config
-        return config
-    else:
-        print(f'No config file.')
-        exit()
-
-def get_week_start_end(format="%Y-%m-%d") -> tuple[str,str]:
+def get_week_start_end() -> tuple[str,str]:
     """
     Get this weeks start and end date.
     """
+    format="%Y-%m-%d"
     dt = datetime.today()
     start_report_date = dt - timedelta(days=dt.weekday())
     end_report_date = start_report_date + timedelta(days=6)
     return start_report_date.strftime(format), end_report_date.strftime(format)
 
-def get_report(api_token, user_agent, workspace_id, url='https://api.track.toggl.com/reports/api/v2/details') -> dict:
+def get_report(api_token, user_agent, workspace_id) -> dict:
+    url='https://api.track.toggl.com/reports/api/v2/details'
+
     start_report_date, end_report_date = get_week_start_end()
+
     payload = {
         "user_agent": user_agent,
         "workspace_id": workspace_id,
@@ -32,7 +29,7 @@ def get_report(api_token, user_agent, workspace_id, url='https://api.track.toggl
     }
     return get(url, auth=(api_token, 'api_token'), params=payload).json()['data']
 
-def get_sgu_dict(data, username):
+def get_sgu_dict(data, username: str) -> dict:
     entries = []
     for entry in data:
         if len(entry['tags']):
@@ -52,11 +49,13 @@ def get_sgu_dict(data, username):
         
     return entries
 
-def sgu_dict_to_csv(data, filename):
+def sgu_dict_to_csv(data: dict, filename: str) -> None:
     DataFrame.from_dict(data).to_csv(filename, index=False, encoding='ansi', sep=';')
+    return None
 
-def get_workspace_ids(api_token: str):
-    return get('https://api.track.toggl.com/api/v8/workspaces', auth=(api_token, 'api_token')).json()
+def get_workspace_id(api_token: str):
+    url = 'https://api.track.toggl.com/api/v8/workspaces'
+    return get(url, auth=(api_token, 'api_token')).json()
 
 def print_csv_report(email: str, workspace_id: str, api_token: str, sgu_username: str, output_file_name: str) -> None:
     r = get_report(
@@ -70,19 +69,12 @@ def print_csv_report(email: str, workspace_id: str, api_token: str, sgu_username
 
     return None
 
-def main() -> None:
-    config = new_func()
-
-    # print(get_workspace_ids(
-    #     api_token=config.API_TOKEN))
-
-    print_csv_report(email=config.EMAIL,
-        workspace_id=config.WORKSPACE_ID,
-        api_token=config.API_TOKEN,
-        sgu_username=config.SGU_USERNAME,
-        output_file_name='test')
-    
-    return None
-
-if __name__ == '__main__':
-    main()
+def get_config(filename: str) -> dict:
+    if filename.endswith('.yaml'):
+        try:
+            with open(filename, 'r') as yaml_file:
+                return safe_load(yaml_file)
+        except YAMLError as exc:
+            raise exc
+    else:
+        raise Exception('Invalid file extension')
