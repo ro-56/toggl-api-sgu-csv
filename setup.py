@@ -37,8 +37,7 @@ setup(
     install_requires=[
         'pandas>=1.2.4',
         'requests>=2.25.*',
-        'datetime>=2.7.*',
-        'yaml>=5.4.*'
+        'datetime>=2.7.*'
     ],
 
     entry_points={
