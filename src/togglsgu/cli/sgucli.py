@@ -1,4 +1,4 @@
-from lib.lib import get_config, print_csv_report, get_workspace_id
+from togglsgu.lib.lib import get_config, print_csv_report, get_workspace_id
 
 def make_example(output_file: str) -> None:
     pass

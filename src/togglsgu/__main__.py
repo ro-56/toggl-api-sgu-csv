@@ -1,4 +1,4 @@
-from src.cli.sgucli import make_example, make_full_report, get_workspace_id
+from .cli.sgucli import make_example, make_full_report, get_workspace_id
 from argparse import ArgumentParser
 
 def main():    

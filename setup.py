@@ -37,12 +37,13 @@ setup(
     install_requires=[
         'pandas>=1.2.4',
         'requests>=2.25.*',
-        'datetime>=2.7.*'
+        'datetime>=2.7.*',
+        'pyyaml>=6.0'
     ],
 
     entry_points={
         'console_scripts': [
-            'sguTogglCsv=src.__main__:main',
+            'sguTogglCsv=togglsgu.__main__:main',
         ],
     }
 )
