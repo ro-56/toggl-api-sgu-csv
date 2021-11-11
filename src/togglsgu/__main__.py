@@ -1,5 +1,6 @@
-from .cli.sgucli import make_example, make_full_report, get_workspace_id
+from .cli.sgucli import cli_make_example, cli_make_full_report, cli_get_workspace_id
 from argparse import ArgumentParser
+from . import config
 
 def main():    
     parser = ArgumentParser()
@@ -11,25 +12,29 @@ def main():
 
     subparsers.add_parser('example', help='Returns an example of the .yaml configuration file')
 
-    subparsers.add_parser('geWorkspacetIds', help='Returns workspace ids related to the api token')
-
+    workspaceIdParser = subparsers.add_parser('geWorkspacetIds', help='Returns workspace ids related to the api token')
+    workspaceIdParser.add_argument('filepath', help='The filepath of the configuration file')
+    
+    parser.add_argument('-d', '--debug', help='Enable debug mode', action='store_true')
     args = parser.parse_args()
 
+    if args.debug:
+        config.__DEBUG__ = True
 
     if args.mode == 'example':
-        make_example()
+        cli_make_example()
         return
     
     if args.mode == 'geWorkspacetIds':
-        get_workspace_id()
+        cli_get_workspace_id(args.filepath)
         return
     
     if args.mode == 'build':
         if args.filepath:
             if args.destination:
-                make_full_report(args.filepath, args.destination)
+                cli_make_full_report(args.filepath, args.destination)
             else:
-                make_full_report(args.filepath)
+                cli_make_full_report(args.filepath)
     else:
-        print('No mode specified')
+        print('No valid mode specified')
         raise Exception('Invalid mode')

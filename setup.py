@@ -8,7 +8,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name='togglsgu',
-    version='1.0.0',
+    version='1.0.1',
     author='Rodrigo Mendonça',
     description='A simple project to automate the creation of csv files for sgu import from a config file.',
     long_description=long_description,
@@ -25,14 +25,14 @@ setup(
 
         "Operating System :: OS Independent",
 
-        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3',
     ],
 
     package_dir={'': 'src'},
 
     packages=find_packages(where="src"), 
 
-    python_requires='>=3.10',
+    python_requires='>=3.8',
 
     install_requires=[
         'pandas>=1.2.4',
