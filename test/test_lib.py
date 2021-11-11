@@ -1,7 +1,7 @@
 from togglsgu.lib.lib import get_config
 
 def test_get_config():
-    config = get_config('test.yaml')
+    config = get_config('docs/test.yaml')
     expected = {
         'email': 'a',
         'workspace_id': 'b',

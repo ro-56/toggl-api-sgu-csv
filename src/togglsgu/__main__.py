@@ -8,7 +8,7 @@ def main():
     
     parser_build = subparsers.add_parser('build', help='Builds the application defined in a configuration file')
     parser_build.add_argument('filepath', help='The filepath of the configuration file')
-    parser_build.add_argument('destination', help='The destination of the generated csv file')
+    parser_build.add_argument('destination', nargs='?', help='The destination of the generated csv file')
 
     subparsers.add_parser('example', help='Returns an example of the .yaml configuration file')
 
