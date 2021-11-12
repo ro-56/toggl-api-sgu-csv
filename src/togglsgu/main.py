@@ -12,7 +12,7 @@ def main():
 
     subparsers.add_parser('example', help='Returns an example of the .yaml configuration file')
 
-    workspaceIdParser = subparsers.add_parser('geWorkspacetIds', help='Returns workspace ids related to the api token')
+    workspaceIdParser = subparsers.add_parser('getIds', help='Returns workspace ids related to the api token')
     workspaceIdParser.add_argument('filepath', help='The filepath of the configuration file')
     
     parser.add_argument('-d', '--debug', help='Enable debug mode', action='store_true')

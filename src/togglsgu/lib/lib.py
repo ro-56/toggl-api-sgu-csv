@@ -37,9 +37,9 @@ def get_report(api_token, user_agent, workspace_id) -> dict:
     response = get(url, auth=(api_token, 'api_token'), params=payload).json()
     retval = response.get('data')
 
-    if not retval:
+    if response.get('error'):
         print(f'[ERROR] Error with the Toggl API. Message: {response.get("error").get("message")}, Tip: {response.get("error").get("tip")}, Code: {response.get("error").get("code")}') if config.__DEBUG__ else None
-        raise Exception('No data returned from Toggl')
+        raise Exception('Error returned from Toggl')
 
     print(f'[DEBUG] Toggl report: {retval}') if config.__DEBUG__ else None
     

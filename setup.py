@@ -8,7 +8,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name='togglsgu',
-    version='1.0.1',
+    version='1.0.2',
     author='Rodrigo Mendonça',
     description='A simple project to automate the creation of csv files for sgu import from a config file.',
     long_description=long_description,
@@ -23,16 +23,18 @@ setup(
 
         'License :: OSI Approved :: MIT License',
 
-        "Operating System :: OS Independent",
-
-        'Programming Language :: Python :: 3',
+        "Operating System :: OS Independent"
     ],
 
-    package_dir={'': 'src'},
+    package_dir={
+        'togglsgu': 'src/togglsgu',
+        'togglsgu.cli': 'src/togglsgu/cli',
+        'togglsgu.lib': 'src/togglsgu/lib'
+        },
 
     packages=find_packages(where="src"), 
 
-    python_requires='>=3.8',
+    python_requires='>=3.9',
 
     install_requires=[
         'pandas>=1.2.4',
@@ -43,7 +45,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'sguTogglCsv=togglsgu.__main__:main',
+            'getSguToggl=togglsgu.main:main',
         ],
     }
 )

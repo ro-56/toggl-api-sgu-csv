@@ -1,3 +1,7 @@
 __pycache__/
 *.csv
 .pytest_cache
+build/
+togglsgu.egg-info/
+.vscode/
+private.yaml
