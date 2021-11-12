@@ -7,21 +7,22 @@ from yaml import safe_load, YAMLError
 from .. import config
 
 
-def get_week_start_end() -> tuple[str , str]:
+def get_week_start_end() -> tuple[str, str]:
     """
     Get this weeks start and end date.
     """
-    format="%Y-%m-%d"
+    format = "%Y-%m-%d"
     dt = datetime.today()
     start_report_date = dt - timedelta(days=dt.weekday())
     end_report_date = start_report_date + timedelta(days=6)
 
     start_report_date = start_report_date.strftime(format)
     end_report_date = end_report_date.strftime(format)
-    
+
     print(f'[DEBUG] Start report date: {start_report_date} | End report date: {end_report_date}') if config.__DEBUG__ else None
-    
+
     return start_report_date, end_report_date
+
 
 def get_report(api_token, user_agent, workspace_id) -> dict:
     url = 'https://api.track.toggl.com/reports/api/v2/details'
