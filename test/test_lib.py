@@ -1,12 +1,12 @@
-from togglsgu.lib.lib import get_config
+from togglsgu.lib import lib
 
 def test_get_config():
-    config = get_config('docs/test.yaml')
+    config = lib.get_config('docs/test.yaml')
     expected = {
-        'email': 'a',
-        'workspace_id': 'b',
-        'api_token': 'c',
-        'sgu_username': 'd',
-        'output_file_name': 'e'
+        'email': 'email@mail.com',
+        'workspace_id': '123456789',
+        'api_token': 'LoremIpsumDolorSitAmetConsecteturAdipiscingElit',
+        'sgu_username': 'LoremIpsum',
+        'output_file_name': 'output.csv'
         }
     assert config == expected
