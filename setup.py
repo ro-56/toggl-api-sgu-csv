@@ -15,7 +15,7 @@ setup(
     long_description_content_type='text/markdown',
     url='https://github.com/ro-56/toggl-api-sgu-csv',
 
-    license = 'MIT',
+    license='MIT',
     classifiers=[
         'Development Status :: 1 - Planning',
 

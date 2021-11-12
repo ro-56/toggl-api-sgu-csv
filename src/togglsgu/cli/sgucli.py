@@ -1,5 +1,6 @@
 from togglsgu.lib.lib import get_config, print_csv_report, get_workspace_id
 
+
 def cli_make_example() -> None:
     print(
         '''
@@ -14,6 +15,7 @@ def cli_make_example() -> None:
     )
     pass
 
+
 def cli_make_full_report(config_file: str, output_file: str = '') -> None:
     config = get_config(config_file)
 
@@ -26,8 +28,9 @@ def cli_make_full_report(config_file: str, output_file: str = '') -> None:
         api_token=config.get('api_token', ''),
         sgu_username=config.get('sgu_username', ''),
         output_file_name=output_file)
-    
+
     return None
+
 
 def cli_get_workspace_id(config_file: str) -> None:
     config = get_config(config_file)

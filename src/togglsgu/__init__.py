@@ -1,2 +1,2 @@
-from . import lib
-from . import cli
+from .lib import *
+from .cli import *

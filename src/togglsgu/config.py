@@ -1,4 +1,3 @@
-
 __DEBUG__: bool = False
 
 # class bcolors:
