@@ -1,4 +1,4 @@
-# toggl-sgu
+# TogglSgu
 
 ![Latest Release](https://img.shields.io/github/v/release/ro-56/toggl-api-sgu-csv)
 [![Python package](https://github.com/ro-56/toggl-api-sgu-csv/actions/workflows/python-package.yml/badge.svg)](https://github.com/ro-56/toggl-api-sgu-csv/actions/workflows/python-package.yml)
@@ -38,12 +38,17 @@ Run the script:
 ```bash
 getSguToggl build <YAML FILE>
 ```
+## Expected Toggl Data Structure
+
+- **Time entry:** The name and duration of the sgu task;
+- **Project:** The sgu project;
+- **Tag:** The sgu category (if multiple, only one is used);
 
 ## FAQ
 
 ### 1. How to locate the Toggl API Token?
 
-Your personal Toggl api token can be found following [this instructions](https://support.toggl.com/en/articles/3116844-where-is-my-api-key-located).
+Your personal Toggl api token can be found following [these instructions](https://support.toggl.com/en/articles/3116844-where-is-my-api-key-located).
 
 ### 2. How can I find my workspace id?
 
