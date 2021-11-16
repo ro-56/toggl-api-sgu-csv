@@ -26,7 +26,7 @@ def main():
         cli_make_example()
         return
 
-    if args.mode == 'geWorkspacetIds':
+    if args.mode == 'getIds':
         cli_get_workspace_id(args.filepath)
         return
 
