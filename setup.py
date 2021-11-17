@@ -8,7 +8,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name='togglsgu',
-    version='1.0.2',
+    version='1.0.4',
     author='Rodrigo Mendonça',
     description='A simple project to automate the creation of csv files for sgu import from a config file.',
     long_description=long_description,
@@ -40,12 +40,13 @@ setup(
         'pandas>=1.2.4',
         'requests>=2.25.*',
         'datetime>=2.7.*',
-        'pyyaml>=6.0'
+        'pyyaml>=6.0',
+        'argparse>=1.3.*'
     ],
 
     entry_points={
         'console_scripts': [
-            'getSguToggl=togglsgu.main:main',
+            'getSguToggl=togglsgu.cli.cli:main',
         ],
     }
 )
