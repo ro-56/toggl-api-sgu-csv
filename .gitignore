@@ -5,3 +5,5 @@ build/
 togglsgu.egg-info/
 .vscode/
 private.yaml
+.venv/
+togglreports.egg-info/
