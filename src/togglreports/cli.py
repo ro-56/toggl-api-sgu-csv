@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 import logging as log
 
-from togglreports.lib.lib import get_config, print_csv_report, get_workspace_id
+from togglreports.lib import get_config, print_csv_report, get_workspace_id
 
 
 def main():

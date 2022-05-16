@@ -14,7 +14,7 @@ def get_week_start_end() -> tuple[str, str]:
     """
     date_format = "%Y-%m-%d"
     date_today = datetime.today()
-    start_report_date = date_today - timedelta(days=date_today.weekday())
+    start_report_date = date_today - timedelta(days=date_today.weekday() + 8)
     end_report_date = start_report_date + timedelta(days=6)
 
     start_report_date = start_report_date.strftime(date_format)
@@ -37,19 +37,30 @@ def get_report(api_token, user_agent, workspace_id) -> dict:
         "workspace_id": workspace_id,
         "display_hours": "minutes",
         "since": start_report_date,
-        "until": end_report_date
+        "until": end_report_date,
+        "page": 1,
     }
     response = get(url, auth=(api_token, 'api_token'), params=payload).json()
-    retval = response.get('data')
+    time_entries = response.get('data')
 
+    # If there are more entries than the page size, get the next page
+    num_entries = response.get('total_count', 0)
+    entries_per_page = response.get('per_page', 0)
+    while (num_entries > entries_per_page):
+        payload['page'] += 1
+        response = get(url, auth=(api_token, 'api_token'), params=payload).json()
+        time_entries += response.get('data')
+        num_entries -= entries_per_page
+
+    # If there is an error, raise an exception
     if response.get('error'):
         log.error(f'Error with the Toggl API. Message: {response.get("error").get("message")}, \
                 Tip: {response.get("error").get("tip")}, Code: {response.get("error").get("code")}')
         raise Exception('Error returned from Toggl')
 
-    log.debug(f'Toggl report: {retval}')
+    log.debug(f'Toggl report: {time_entries}')
 
-    return retval
+    return time_entries
 
 
 def get_sgu_dict(data, username: str) -> dict:
