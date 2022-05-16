@@ -1,1 +1,5 @@
-.
+pandas>=1.2.4
+requests>=2.25.*
+datetime>=2.7.*
+pyyaml>=6.0
+argparse>=1.3.*
