@@ -14,7 +14,7 @@ def get_week_start_end() -> tuple[str, str]:
     """
     date_format = "%Y-%m-%d"
     date_today = datetime.today()
-    start_report_date = date_today - timedelta(days=date_today.weekday() + 8)
+    start_report_date = date_today - timedelta(days=date_today.weekday())
     end_report_date = start_report_date + timedelta(days=6)
 
     start_report_date = start_report_date.strftime(date_format)
