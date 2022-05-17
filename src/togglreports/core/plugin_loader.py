@@ -1,4 +1,9 @@
 import importlib
+import os
+import json
+
+
+PLUGIN_FILEPATH = os.path.normpath(os.path.join(os.path.dirname(__file__),"../../../data","reports.json"))
 
 
 class PluginInterface:
@@ -13,17 +18,21 @@ class PluginInterface:
 
 def import_plugin(name: str) -> PluginInterface:
     """Imports a module given a name."""
-    return importlib.import_module(name)
+    return importlib.import_module(f"togglreports.plugins.{name}")
 
 
-def load_plugins(plugin_list: list[dict[str, str]]) -> None:
+def get_plugins() -> list[dict[str, str]]:
+    """Returns a list of plugins."""
+    with open(PLUGIN_FILEPATH) as file:
+        data = json.load(file)
+
+        return data["plugins"]
+
+
+def load_plugins() -> None:
     """Loads the plugins defined in the plugins list."""
-    for plugin_item in plugin_list:
-        try:
-            plugin_name = plugin_item.get("name")
-            plugin_module = plugin_item.get("module")
-        except KeyError as err:
-            raise KeyError(f"Plugin {plugin_item} does not have a name or module") from err
-        
-        plugin = import_plugin(plugin_module)
-        plugin.register(name=plugin_name)
+    plugin_list = get_plugins()
+
+    for plugin_name in plugin_list:
+        plugin = import_plugin(plugin_name)
+        plugin.register(plugin_name)

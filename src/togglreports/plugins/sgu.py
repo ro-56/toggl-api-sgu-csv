@@ -1,8 +1,8 @@
 from togglreports.core import report_factory
 
-class DefaultReport():
+class SGUReport():
     """
-    Default report
+    Sgu report
     """
     def __init__(self):
         pass
@@ -18,4 +18,4 @@ def register(name: str) -> None:
     """
     Register plugin
     """
-    report_factory.register_report(name, DefaultReport)
+    report_factory.register_report(name, SGUReport)

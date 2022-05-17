@@ -1,9 +1,7 @@
 {
     "plugins" : [
-        {
-            "name" : "default",
-            "module": "plugins.default"
-        }
+        "default",
+        "sgu"
     ],
     "reports" : [
 

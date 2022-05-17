@@ -102,16 +102,16 @@ def read_config() -> ConfigParser:
     return config
 
 
-def verify_config_path() -> bool:
+def config_exists() -> bool:
     return os.path.exists(CONFIG_FILE)
 
 
-def init_config_path() -> None:
-    if not verify_config_path():
+def ensure_config_path() -> None:
+    if not config_exists():
         os.mkdir(os.path.dirname(CONFIG_FILE))
     return None
 
 
 if __name__ == '__main__':
-    init_config_path()
+    ensure_config_path()
     init_config()

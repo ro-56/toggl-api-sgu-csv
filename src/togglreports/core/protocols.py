@@ -5,8 +5,8 @@ class ReportPlugin(Protocol):
     def __init__(self):
         pass
 
-    def run(self, args: dict) -> None:
+    def run(self) -> None:
         pass
 
-    def export_report(self, args: dict) -> None:
+    def export(self) -> None:
         pass

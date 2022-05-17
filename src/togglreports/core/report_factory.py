@@ -25,4 +25,4 @@ def create_report(report_name: str, *args, **kwargs) -> ReportPlugin:
     except KeyError as err:
         raise KeyError(f"Report {report_name} does not exist") from err
 
-    return report_class(*args, **kwargs)
+    return report_class(*args, **kwargs).export()
