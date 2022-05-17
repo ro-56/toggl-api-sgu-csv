@@ -1,0 +1,11 @@
+{
+    "plugins" : [
+        {
+            "name" : "default",
+            "module": "plugins.default"
+        }
+    ],
+    "reports" : [
+
+    ]
+}
