@@ -1,4 +1,4 @@
-from togglreports.lib import lib
+from old.lib import lib
 
 
 def test_get_config():

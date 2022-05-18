@@ -1,21 +1,16 @@
-from togglreports.core import report_factory
+from typing import Callable
 
 class DefaultReport():
     """
     Default report
     """
-    def __init__(self):
+    def __init__(self, data: dict):
         pass
-
-    def run(self) -> None:
-        print('run')
 
     def export(self) -> None:
         print('export')
 
 
-def register(name: str) -> None:
-    """
-    Register plugin
-    """
-    report_factory.register_report(name, DefaultReport)
+def register(register_function: Callable, name: str) -> None:
+    """ Register plugin """
+    register_function(name, DefaultReport)

@@ -2,10 +2,8 @@ from typing import Protocol
 
 
 class ReportPlugin(Protocol):
-    def __init__(self):
-        pass
 
-    def run(self) -> None:
+    def __init__(self, data: dict):
         pass
 
     def export(self) -> None:

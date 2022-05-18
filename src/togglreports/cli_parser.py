@@ -1,13 +1,15 @@
 """ Create a parser for the command line arguments """
 from argparse import ArgumentParser
+
 from togglreports.core import report_factory
+from togglreports import build
 
 
 def process_arguments(parser: ArgumentParser) -> None:
     """ Process the parser """
     args = parser.parse_args()
     if args.cmd == 'build':
-        report_factory.create_report(args.type)
+        build.build_report(args.type)
     elif args.cmd == 'config':
         print('config')
     else:

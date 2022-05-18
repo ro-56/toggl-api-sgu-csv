@@ -3,7 +3,7 @@
         "default",
         "sgu"
     ],
-    "reports" : [
-
-    ]
+    "required_config" : {
+        "sgu": ["username"]
+    }
 }

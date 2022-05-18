@@ -8,6 +8,7 @@ CONFIG_FILE = os.path.normpath(os.path.join(os.path.dirname(__file__),"../../dat
 
 
 def init_config():
+    ensure_config_path()
     config = ConfigParser()
 
     print("Initializing TogglReports...")
@@ -112,6 +113,21 @@ def ensure_config_path() -> None:
     return None
 
 
+def get_config_value(section: str, key: str) -> str:
+    config = read_config()
+    return config.get(section, key)
+
+
+def get_report_config(report: str, report_section_prefix: str = 'reports.') -> dict:
+    section = f'{report_section_prefix}{report}'
+    config = read_config()
+    options = config.options(section)
+    data = {}
+    for option in options:
+        data[option] = config.get(section, option)
+    
+    return data
+
+
 if __name__ == '__main__':
-    ensure_config_path()
     init_config()

@@ -2,6 +2,8 @@ import importlib
 import os
 import json
 
+from togglreports.core import report_factory
+
 
 PLUGIN_FILEPATH = os.path.normpath(os.path.join(os.path.dirname(__file__),"../../../data","reports.json"))
 
@@ -35,4 +37,4 @@ def load_plugins() -> None:
 
     for plugin_name in plugin_list:
         plugin = import_plugin(plugin_name)
-        plugin.register(plugin_name)
+        plugin.register(report_factory.register, plugin_name)

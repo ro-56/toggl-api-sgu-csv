@@ -8,12 +8,12 @@ from togglreports.core.protocols import ReportPlugin
 PLUGINS: dict[str, Callable[..., ReportPlugin]] = {}
 
 
-def register_report(report_name: str, report_class: Callable[[], ReportPlugin]) -> None:
+def register(report_name: str, report_class: Callable[[], ReportPlugin]) -> None:
     """ Register report class """
     PLUGINS[report_name] = report_class
 
 
-def unregister_report(report_name: str) -> None:
+def unregister(report_name: str) -> None:
     """ Unregister report class """
     PLUGINS.pop(report_name, None)
 
