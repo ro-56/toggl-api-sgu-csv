@@ -3,7 +3,18 @@
         "default",
         "sgu"
     ],
-    "required_config" : {
-        "sgu": ["username"]
+    "config" : {
+        "sgu": [
+            {
+                "name": "username",
+                "default": "username"
+            }
+        ],
+        "default": [
+            {
+                "name": "username",
+                "default": "username"
+            }
+        ]
     }
 }

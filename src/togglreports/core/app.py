@@ -8,11 +8,11 @@ class Application():
     _parser: ArgumentParser = None
 
     def run(self):
-        # Initialize the application
-        self._initialize()
-
         # Load the plugins
         self._load_plugins()
+
+        # Initialize the application
+        self._initialize()
 
         # Parse the arguments
         cli_parser.process_arguments(self._parser)

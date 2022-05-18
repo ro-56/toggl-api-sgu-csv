@@ -2,22 +2,18 @@ import os
 from configparser import ConfigParser
 
 import togglreports.togglapi as togglapi
-
+import togglreports.core.plugin_loader as pl
 
 CONFIG_FILE = os.path.normpath(os.path.join(os.path.dirname(__file__),"../../data","config.ini"))
 
 
-def init_config():
+def init_config(report_section_prefix: str = 'reports'):
     ensure_config_path()
     config = ConfigParser()
 
-    print("Initializing TogglReports...")
+    print("Initializing...")
 
-    config['toggl'] = {
-        'fields': ['description', 'start', 'end', 'dur', 'user', 'client', 'project', 'tags'],
-    }
-
-    # Get user email
+    # Set user email
     while True:
         toggl_user_apitoken = input("api token: ")
 
@@ -38,7 +34,7 @@ def init_config():
         'api_token': user_data.get('api_token'),
     }
 
-    # Get workspace
+    # Set workspace
     possible_workspaces = togglapi.get_workspaces(toggl_user_apitoken)
     if not possible_workspaces:
         print("No workspaces found.")
@@ -66,7 +62,7 @@ def init_config():
         'name': toggl_workspace.get('name'),
     }
 
-    # Get optional output file configuration
+    # Set optional output file configuration
     input_reports_name = input("report name (toggl_report): ")
     reports_name = 'toggl_report' if not input_reports_name else input_reports_name
 
@@ -78,19 +74,27 @@ def init_config():
         'add_date': reports_add_date,
     }
 
-    # Get sgu report configuration
-    while True:
-        reports_sgu_username = input("sgu username: ")
+    # Set plugins config
+    for plugin, plugin_config_list in pl.get_plugins_required_configuration().items():
+        for plugin_config in plugin_config_list:
+            plugin_config_name = plugin_config.get('name')
+            plugin_config_default = plugin_config.get('default', None)
+            input_request_default = f' ({plugin_config_default})' if plugin_config_default else ''
+            
+            tmp_dict = {}
+            while True:
+                input_data = input(f"[{plugin}] {plugin_config_name}{input_request_default}: ")
 
-        if not reports_sgu_username:
-            print("Please enter a sgu username.")
-            continue
+                if not input_data and not plugin_config_default:
+                    print("Please enter a value.")
+                    continue
+                    
+                break
+            
+            tmp_dict[f'{plugin_config_name}'] = input_data if input_data else plugin_config_default
+        
+        config[f'{report_section_prefix}.{plugin}'] = tmp_dict
 
-        break
-
-    config['reports.sgu'] = {
-        'username': reports_sgu_username,
-    }
 
     # Write config file
     with open(CONFIG_FILE, 'w') as configfile:
@@ -118,8 +122,8 @@ def get_config_value(section: str, key: str) -> str:
     return config.get(section, key)
 
 
-def get_report_config(report: str, report_section_prefix: str = 'reports.') -> dict:
-    section = f'{report_section_prefix}{report}'
+def get_report_config(report: str, report_section_prefix: str = 'reports') -> dict:
+    section = f'{report_section_prefix}.{report}'
     config = read_config()
     options = config.options(section)
     data = {}
