@@ -1,11 +1,11 @@
 from argparse import ArgumentParser
-import json
 
 from togglreports import cli_parser, config
-from togglreports.core import plugin_loader, report_factory
+from togglreports.core import plugin_loader
+
 
 class Application():
-    _parser: ArgumentParser = None
+    _parser: ArgumentParser
 
     def run(self):
         # Load the plugins
@@ -17,13 +17,11 @@ class Application():
         # Parse the arguments
         cli_parser.process_arguments(self._parser)
 
-
-
     def _initialize(self):
         # Initialize the configuration if not present
         if not config.config_exists():
             config.init_config()
-        
+
         self._parser = cli_parser.create_parser()
         if not self._parser:
             raise Exception('Parser not initialized')
@@ -31,4 +29,3 @@ class Application():
 
     def _load_plugins(self):
         plugin_loader.load_plugins()
-

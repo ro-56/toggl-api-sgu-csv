@@ -76,12 +76,13 @@ def init_config(report_section_prefix: str = 'reports'):
 
     # Set plugins config
     for plugin, plugin_config_list in pl.get_plugins_required_configuration().items():
+        
+        tmp_dict = {}
         for plugin_config in plugin_config_list:
             plugin_config_name = plugin_config.get('name')
             plugin_config_default = plugin_config.get('default', None)
             input_request_default = f' ({plugin_config_default})' if plugin_config_default else ''
             
-            tmp_dict = {}
             while True:
                 input_data = input(f"[{plugin}] {plugin_config_name}{input_request_default}: ")
 
@@ -111,8 +112,12 @@ def config_exists() -> bool:
     return os.path.exists(CONFIG_FILE)
 
 
+def config_path_exists() -> bool:
+    return os.path.exists(CONFIG_FILE[:-len(os.path.basename(CONFIG_FILE))])
+
+
 def ensure_config_path() -> None:
-    if not config_exists():
+    if not config_path_exists():
         os.mkdir(os.path.dirname(CONFIG_FILE))
     return None
 
@@ -122,14 +127,18 @@ def get_config_value(section: str, key: str) -> str:
     return config.get(section, key)
 
 
-def get_report_config(report: str, report_section_prefix: str = 'reports') -> dict:
-    section = f'{report_section_prefix}.{report}'
+def get_config_section(section: str) -> dict:
     config = read_config()
     options = config.options(section)
     data = {}
     for option in options:
         data[option] = config.get(section, option)
-    
+    return data
+
+
+def get_report_config(report: str, report_section_prefix: str = 'reports') -> dict:
+    section = f'{report_section_prefix}.{report}'
+    data = get_config_section(section)
     return data
 
 

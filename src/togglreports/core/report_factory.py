@@ -18,11 +18,13 @@ def unregister(report_name: str) -> None:
     PLUGINS.pop(report_name, None)
 
 
-def create_report(report_name: str, *args, **kwargs) -> ReportPlugin:
+def create_report(report_name: str, *args, **kwargs) -> None:
     """ Create report """
     try:
         report_class = PLUGINS[report_name]
     except KeyError as err:
         raise KeyError(f"Report {report_name} does not exist") from err
 
-    return report_class(*args, **kwargs).export()
+    report_class(*args, **kwargs).export()
+
+    return None

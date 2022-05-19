@@ -1,5 +1,3 @@
-from configparser import ConfigParser
-
 from togglreports.core import report_factory
 from togglreports import togglapi
 from togglreports import config as cfg
@@ -9,7 +7,8 @@ def build_report(report_type: str):
     """ Build the report """
     data = get_report_data()
     config = cfg.get_report_config(report_type)
-    report_factory.create_report(report_type, data=data, config=config)
+    base_config = cfg.get_config_section('reports')
+    report_factory.create_report(report_type, data=data, config=config, base_config=base_config)
 
 
 def get_report_data():

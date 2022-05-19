@@ -1,7 +1,7 @@
 import datetime as dt
 import logging as log
 
-def get_period_start_end(period: str = None, format: str = "%Y-%m-%d") -> tuple[str, str]:
+def get_period_start_end(period: str = '', format: str = "%Y-%m-%d") -> tuple[str, str]:
     """ Get datetime for start and end of a predetermined period. 
     If no period is specified, get this weeks start and end date.
     """
