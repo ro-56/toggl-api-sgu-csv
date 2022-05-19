@@ -1,19 +1,12 @@
 {
     "plugins" : [
-        "default",
+        "example",
         "sgu"
     ],
     "config" : {
         "sgu": [
             {
-                "name": "username",
-                "default": "username"
-            }
-        ],
-        "default": [
-            {
-                "name": "username",
-                "default": "username"
+                "name": "username"
             }
         ]
     }

@@ -2,6 +2,7 @@ from typing import Callable
 import pandas as pd
 import datetime as dt
 
+
 class SGUReport():
     """
     Sgu report
@@ -19,12 +20,10 @@ class SGUReport():
     _default_ignore_tag: str = '<IGNORE>'
     _max_num_chars: int = 50
 
-
     def __init__(self, data: list[dict], base_config: dict, config: dict):
         self._base_data = data
         self._base_config = base_config
         self._config = config
-
 
     def export(self) -> None:
         """ Export data to file """
@@ -34,9 +33,9 @@ class SGUReport():
         prefix = f'{dt.datetime.today().strftime("%Y%m%d")}_' if self._base_config.get('add_date', False) else ''
 
         pd.DataFrame.from_dict(data).to_csv(
-            f'{prefix}{filename}.{self._file_format}', 
-            index=False, 
-            encoding=self._file_encoding, 
+            f'{prefix}{filename}.{self._file_format}',
+            index=False,
+            encoding=self._file_encoding,
             sep=self._separator
         )
 
