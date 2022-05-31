@@ -4,7 +4,7 @@ from configparser import ConfigParser
 import togglreports.togglapi as togglapi
 import togglreports.core.plugin_loader as pl
 
-CONFIG_FILE = os.path.normpath(os.path.join(os.path.dirname(__file__),"../../data","config.ini"))
+CONFIG_FILE = os.path.normpath(os.path.join(os.path.dirname(__file__), "../../data", "config.ini"))
 
 
 def init_config(report_section_prefix: str = 'reports'):
@@ -21,7 +21,7 @@ def init_config(report_section_prefix: str = 'reports'):
             print("Please enter an api token.")
             continue
 
-        try: 
+        try:
             user_data = togglapi.get_me(toggl_user_apitoken).get('data')
         except Exception:
             print("Invalid api token.")
@@ -47,8 +47,7 @@ def init_config(report_section_prefix: str = 'reports'):
 
         if (input_workspace_idx
             and (not input_workspace_idx.isdigit()
-                or int(input_workspace_idx) >= len(possible_workspaces))
-        ):
+                or int(input_workspace_idx) >= len(possible_workspaces))):
             print("Please enter a valid workspace number.")
             continue
 
@@ -76,7 +75,6 @@ def init_config(report_section_prefix: str = 'reports'):
 
     # Set plugins config
     for plugin, plugin_config_list in pl.get_plugins_required_configuration().items():
-  
         tmp_dict = {}
         for plugin_config in plugin_config_list:
             plugin_config_name = plugin_config.get('name')

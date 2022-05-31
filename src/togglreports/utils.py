@@ -1,12 +1,14 @@
 import datetime as dt
-import logging as log
+
+
+PERIODS = ['thisweek', 'lastweek', 'thismonth']
+
 
 def get_period_start_end(period: str = '', format: str = "%Y-%m-%d") -> tuple[str, str]:
     """ Get datetime for start and end of a predetermined period. 
     If no period is specified, get this weeks start and end date.
     """
-    accepted_periods = ['thisweek', 'lastweek', 'thismonth']
-    if period not in accepted_periods:
+    if period not in PERIODS:
         period = 'thisweek'
 
     date_today = dt.datetime.today()

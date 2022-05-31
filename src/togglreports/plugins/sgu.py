@@ -42,25 +42,26 @@ class SGUReport():
     def _process(self, data: list[dict]) -> list[dict]:
         """ Process data to specific format """
         username = self._config.get('username', '')
+        ignored_tag = self._config.get('ignored_tag', self._default_ignore_tag)
+        default_tag = self._config.get('default_tag', '')
         processed_data = []
 
         for entry in data:
             # Check if entry is a valid entry
             if (len(entry['tags']) >= 1):
-                if self._default_ignore_tag in entry['tags']:
+                if ignored_tag in entry['tags']:
                     continue
                 categ = entry['tags'][0]
             else:
-                categ = ''
+                categ = default_tag
 
             processed_data.append({
-                'DATA': dt.datetime.strptime(entry['start'],
-                                        "%Y-%m-%dT%H:%M:%S-03:00").strftime("%d/%m/%Y"),
+                'DATA': dt.datetime.strptime(entry['start'], "%Y-%m-%dT%H:%M:%S-03:00").strftime("%d/%m/%Y"),
                 'PROJETO': entry['project'],
                 'CATEGORIA': categ,
                 'ATIVIDADE': entry['description'][:self._max_num_chars],
                 'OPORTUNIDADE': '',
-                'HORAS': str(float(entry['dur'])/3600000).replace('.', ','),
+                'HORAS': str(float(entry['dur']) / 3600000).replace('.', ','),
                 'USERNAME': username
             })
 

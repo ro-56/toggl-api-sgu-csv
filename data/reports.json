@@ -1,12 +1,19 @@
 {
     "plugins" : [
-        "example",
         "sgu"
     ],
     "config" : {
         "sgu": [
             {
                 "name": "username"
+            },
+            {
+                "name": "default_tag",
+                "default": "Geral"
+            },
+            {
+                "name": "ignored_tag",
+                "default": "<IGNORE>"
             }
         ]
     }

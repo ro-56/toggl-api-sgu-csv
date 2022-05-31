@@ -4,13 +4,14 @@ from argparse import ArgumentParser
 from togglreports.core import report_factory
 from togglreports import build
 from togglreports import config
+from togglreports import utils
 
 
 def process_arguments(parser: ArgumentParser) -> None:
     """ Process the parser """
     args = parser.parse_args()
     if args.cmd == 'build':
-        build.build_report(args.type)
+        build.build_report(args.type, period=args.p)
     elif args.cmd == 'config':
         config.init_config()
     else:
@@ -34,6 +35,7 @@ def _add_build_subparser(subparser: ArgumentParser) -> None:
 
     parser = subparser.add_parser('build', help='Generate a report')
     parser.add_argument('type', choices=report_factory.PLUGINS, help='The report type to generate')
+    parser.add_argument('-p', choices=utils.PERIODS, help='The period to generate the report for')
     parser.set_defaults(command='build')
 
     return None

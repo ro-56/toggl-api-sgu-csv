@@ -50,7 +50,7 @@ def get_detailed_report(api_token: str, workspace_id: int, user_agent: str = 're
 
     # Get report horizon
     start_report_date, end_report_date = utils.get_period_start_end(kwargs.get('period', None))
-    
+
     # Make request
     payload = {
         'workspace_id': workspace_id,
