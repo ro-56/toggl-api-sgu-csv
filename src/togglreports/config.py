@@ -56,7 +56,7 @@ def init_config(report_section_prefix: str = 'reports'):
 
         toggl_workspace = possible_workspaces[workspace_idx]
         break
-    
+
     config['toggl.workspace'] = {
         'id': toggl_workspace.get('id'),
         'name': toggl_workspace.get('name'),
@@ -68,7 +68,7 @@ def init_config(report_section_prefix: str = 'reports'):
 
     input_reports_add_date = input("use current date as prefix (y): ")
     reports_add_date = True if ((input_reports_add_date == 'y') or (not input_reports_add_date)) else False
-    
+
     config['reports'] = {
         'name': reports_name,
         'add_date': reports_add_date,
@@ -76,26 +76,25 @@ def init_config(report_section_prefix: str = 'reports'):
 
     # Set plugins config
     for plugin, plugin_config_list in pl.get_plugins_required_configuration().items():
-        
+  
         tmp_dict = {}
         for plugin_config in plugin_config_list:
             plugin_config_name = plugin_config.get('name')
             plugin_config_default = plugin_config.get('default', None)
             input_request_default = f' ({plugin_config_default})' if plugin_config_default else ''
-            
+
             while True:
                 input_data = input(f"[{plugin}] {plugin_config_name}{input_request_default}: ")
 
                 if not input_data and not plugin_config_default:
                     print("Please enter a value.")
                     continue
-                    
-                break
-            
-            tmp_dict[f'{plugin_config_name}'] = input_data if input_data else plugin_config_default
-        
-        config[f'{report_section_prefix}.{plugin}'] = tmp_dict
 
+                break
+
+            tmp_dict[f'{plugin_config_name}'] = input_data if input_data else plugin_config_default
+
+        config[f'{report_section_prefix}.{plugin}'] = tmp_dict
 
     # Write config file
     with open(CONFIG_FILE, 'w') as configfile:

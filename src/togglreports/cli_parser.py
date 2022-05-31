@@ -3,6 +3,7 @@ from argparse import ArgumentParser
 
 from togglreports.core import report_factory
 from togglreports import build
+from togglreports import config
 
 
 def process_arguments(parser: ArgumentParser) -> None:
@@ -11,7 +12,7 @@ def process_arguments(parser: ArgumentParser) -> None:
     if args.cmd == 'build':
         build.build_report(args.type)
     elif args.cmd == 'config':
-        print('config')
+        config.init_config()
     else:
         parser.print_help()
         exit(1)
@@ -19,7 +20,7 @@ def process_arguments(parser: ArgumentParser) -> None:
 
 def create_parser() -> ArgumentParser:
     parser = ArgumentParser()
-    
+
     subparsers = parser.add_subparsers(dest='cmd')
 
     _add_build_subparser(subparsers)
@@ -30,7 +31,7 @@ def create_parser() -> ArgumentParser:
 
 def _add_build_subparser(subparser: ArgumentParser) -> None:
     """ Add the build subparser to the parser """
-    
+
     parser = subparser.add_parser('build', help='Generate a report')
     parser.add_argument('type', choices=report_factory.PLUGINS, help='The report type to generate')
     parser.set_defaults(command='build')
@@ -40,7 +41,7 @@ def _add_build_subparser(subparser: ArgumentParser) -> None:
 
 def _add_config_subparser(subparser: ArgumentParser) -> None:
     """ Add the config subparser to the parser """
-    
+
     parser = subparser.add_parser('config', help='Change the configuration')
     parser.set_defaults(command='config')
 
