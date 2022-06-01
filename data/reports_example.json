@@ -1,0 +1,16 @@
+{
+    "plugins" : [
+        "example"
+    ],
+    "config" : {
+        "example": [
+            {
+                "name": "example_config_name",
+                "default": "example_config_value"
+            },
+            {
+                "name": "example_config_name_1"
+            }
+        ]
+    }
+}
