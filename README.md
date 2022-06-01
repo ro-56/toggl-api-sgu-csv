@@ -1,7 +1,7 @@
 # TogglReports
 
-![Latest Release](https://img.shields.io/github/v/release/ro-56/toggl-api-sgu-csv)
-[![Python package](https://github.com/ro-56/toggl-api-sgu-csv/actions/workflows/python-package.yml/badge.svg)](https://github.com/ro-56/toggl-api-sgu-csv/actions/workflows/python-package.yml)
+![Latest Release](https://img.shields.io/github/v/release/ro-56/togglReports)
+[![Python package](https://github.com/ro-56/togglReports/actions/workflows/python-package.yml/badge.svg)](https://github.com/ro-56/togglReports/actions/workflows/python-package.yml)
 ![License, MIT](https://img.shields.io/badge/license-MIT-green)
 ![Python, 3.9+](https://img.shields.io/badge/python-3.9%2B-blue)
 
@@ -18,7 +18,7 @@ TogglReports is a Python library for creating time entry reports from Toggl's de
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install TogglReports.
 
 ```bash
-pip install git+https://github.com/ro-56/toggl-api-sgu-csv
+pip install git+https://github.com/ro-56/togglReports
 ```
 
 ## Usage
