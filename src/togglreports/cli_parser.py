@@ -11,7 +11,7 @@ def process_arguments(parser: ArgumentParser) -> None:
     """ Process the parser """
     args = parser.parse_args()
     if args.cmd == 'build':
-        build.build_report(args.type, period=args.p)
+        build.build_report(args.type, period=args.period, start=args.start)
     elif args.cmd == 'config':
         config.init_config()
     else:
@@ -35,7 +35,9 @@ def _add_build_subparser(subparser: ArgumentParser) -> None:
 
     parser = subparser.add_parser('build', help='Generate a report')
     parser.add_argument('type', choices=report_factory.PLUGINS, help='The report type to generate')
-    parser.add_argument('-p', choices=utils.PERIODS, help='The period to generate the report for')
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument('-p', '--period', choices=utils.PERIODS, help='The period to generate the report for')
+    group.add_argument('-s', '--start', help='A date to start the report from. Expects YYYY-MM-DD format')
     parser.set_defaults(command='build')
 
     return None

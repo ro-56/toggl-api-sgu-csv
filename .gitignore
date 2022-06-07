@@ -7,3 +7,4 @@ dist/
 playground/
 *.csv
 .pytest_cache
+data/config.ini
