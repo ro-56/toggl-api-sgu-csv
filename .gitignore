@@ -1,7 +1,10 @@
 __pycache__/
+build/
+.vscode/
+.venv/
+dist/
+*.egg-info/
+playground/
 *.csv
 .pytest_cache
-build/
-togglsgu.egg-info/
-.vscode/
-private.yaml
+data/config.ini
