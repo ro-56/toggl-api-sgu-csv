@@ -1,1 +1,1 @@
-include data/*
+include src/togglreports/data/*
