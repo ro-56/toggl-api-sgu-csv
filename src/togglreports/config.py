@@ -4,7 +4,7 @@ from configparser import ConfigParser
 import togglreports.togglapi as togglapi
 import togglreports.core.plugin_loader as pl
 
-CONFIG_FILE = os.path.normpath(os.path.join(os.path.dirname(__file__), "../../data", "config.ini"))
+CONFIG_FILE = os.path.normpath(os.path.join(os.path.dirname(__file__), "./data", "config.ini"))
 
 
 def init_config(report_section_prefix: str = 'reports'):
