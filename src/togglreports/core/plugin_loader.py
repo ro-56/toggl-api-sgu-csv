@@ -6,7 +6,7 @@ from typing import Callable
 from togglreports.core import report_factory
 
 
-PLUGIN_FILEPATH = os.path.normpath(os.path.join(os.path.dirname(__file__), "../../../data", "reports.json"))
+PLUGIN_FILEPATH = os.path.normpath(os.path.join(os.path.dirname(__file__), "../data", "reports.json"))
 
 
 class PluginInterface:
