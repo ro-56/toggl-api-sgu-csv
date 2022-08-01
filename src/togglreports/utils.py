@@ -1,7 +1,7 @@
 import datetime as dt
 
 
-PERIODS = ['thisweek', 'lastweek', 'thismonth']
+PERIODS = ['thisweek', 'lastweek', 'thismonth', 'today']
 
 
 def get_period_start_end(period: str = None, start: str = None, format: str = "%Y-%m-%d") -> tuple[str, str]:
@@ -31,6 +31,9 @@ def get_period_start_end(period: str = None, start: str = None, format: str = "%
         elif period == 'thismonth':
             start_report_date = date_today.replace(day=1)
             end_report_date = get_last_day_of_month(start_report_date)
+        elif period == 'today':
+            start_report_date = date_today.replace(hour=0, minute=0, second=0)
+            end_report_date = date_today.replace(hour=23, minute=59, second=59)
 
     return start_report_date.strftime(format), end_report_date.strftime(format)
 
