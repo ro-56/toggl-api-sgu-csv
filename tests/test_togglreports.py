@@ -1,4 +1,4 @@
-import togglreports as tr
+import src.togglreports as tr
 
 
 class TestTogglReports:
