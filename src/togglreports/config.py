@@ -47,7 +47,7 @@ def init_config(report_section_prefix: str = 'reports'):
 
         if (input_workspace_idx
             and (not input_workspace_idx.isdigit()
-                or int(input_workspace_idx) >= len(possible_workspaces))):
+                 or int(input_workspace_idx) >= len(possible_workspaces))):
             print("Please enter a valid workspace number.")
             continue
 
