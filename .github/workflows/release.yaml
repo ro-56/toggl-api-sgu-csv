@@ -36,3 +36,13 @@ jobs:
       env:
         GH_TOKEN: ${{secrets.R_GITHUB_TOKEN}}
         PYPI_TOKEN: ${{secrets.PYPI_TOKEN}}
+    
+    - name: Sync Develop - Create Pull Request
+      uses: peter-evans/create-pull-request@v4
+      with:
+        token: ${{ secrets.R_GITHUB_TOKEN }}
+        title: '[Sync] Main -> Develop'
+        commit-message: Syncing develop with latest release
+        base: main
+        branch: develop
+        labels: automated pr

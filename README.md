@@ -1,7 +1,7 @@
 # TogglReports
 
 ![Latest Release](https://img.shields.io/github/v/release/ro-56/togglReports)
-[![Python package](https://github.com/ro-56/togglReports/actions/workflows/python-package.yml/badge.svg)](https://github.com/ro-56/togglReports/actions/workflows/python-package.yml)
+[![Python package](https://github.com/ro-56/togglReports/actions/workflows/test.yml/badge.svg)](https://github.com/ro-56/togglReports/actions/workflows/test.yml)
 ![License, MIT](https://img.shields.io/badge/license-MIT-green)
 ![Python, 3.9+](https://img.shields.io/badge/python-3.9%2B-blue)
 
@@ -9,16 +9,12 @@
 
 TogglReports is a Python library for creating time entry reports from Toggl's detailed report data.
 
-## Prerequisites
-
-- Install [Python](https://www.python.org/downloads/) which includes [pip](https://pip.pypa.io/en/stable/)
-
 ## Installation
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install TogglReports.
 
 ```bash
-pip install git+https://github.com/ro-56/togglReports
+pip install togglreports
 ```
 
 ## Usage
@@ -35,6 +31,21 @@ To reset and redo the configuration script, run the script:
 ```bash
 togglReports config
 ```
+
+### Arguments
+You can specify the start and end times used for a report with the tags `-p` (`-period`), `-s` (`--start`), and `-e` (`--end`).
+
+The `--period` tag can be used to build reports with common start and end times. Possible values are: 
+ - `today`: entries for today
+ - `thisweek`: entries from the last sunday to the next saturday
+ - `lastweek`: entries from past week, from sunday to saturday
+ - `thismonth`: entries from the first day to the last day of this month
+
+The `--start` and `--end` tags can be used to define a specific time frame. The generated report will contain entries from the specified `--start` date, to the specified `--end` date. 
+
+The `--end` tag is optional. If not specified, today's date will be used.
+
+**Default:** If no argument is specified, the report will contain only this week's time entries (Same behaviour as using `-p thisweek`).
 
 ## Report: SGU - Expected Toggl Data Structure
 
