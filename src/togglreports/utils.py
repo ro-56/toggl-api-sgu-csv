@@ -4,13 +4,16 @@ import datetime as dt
 PERIODS = ['thisweek', 'lastweek', 'thismonth', 'today']
 
 
-def get_period_start_end(period: str = None, start: str = None, format: str = "%Y-%m-%d", reference: str = None) -> tuple[str, str]:
+def get_period_start_end(period: str = None, start: str = None, end: str = None, format: str = "%Y-%m-%d", reference: str = None) -> tuple[str, str]:
     """ Get datetime for start and end of a predetermined period.
     If no period is specified, get this weeks start and end date.
     """
 
-    if period and start:
-        raise Exception("Conflicting arguments: period and start")
+    if period and (start or end):
+        raise Exception("Conflicting arguments: period and start/end")
+
+    if (start is None and end is not None):
+        raise Exception("Got ending date without a start")
 
     try:
         _ = dt.datetime.today().strftime(format)
@@ -25,12 +28,19 @@ def get_period_start_end(period: str = None, start: str = None, format: str = "%
     else:
         reference_date = dt.datetime.today()
 
-    if start is not None:
+    if (start is not None and end is None):
         try:
             start_report_date = dt.datetime.strptime(start, format)
         except ValueError:
             raise ValueError("Incorrect data format, should be YYYY-MM-DD")
         end_report_date = reference_date.replace(hour=23, minute=59, second=59)
+
+    elif (start is not None and end is not None):
+        try:
+            start_report_date = dt.datetime.strptime(start, format)
+            end_report_date = dt.datetime.strptime(end, format).replace(hour=23, minute=59, second=59)
+        except ValueError:
+            raise ValueError("Incorrect data format, should be YYYY-MM-DD")
 
     else:
         if period not in PERIODS:
