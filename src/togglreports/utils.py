@@ -20,7 +20,7 @@ def get_period_start_end(period: str = None, start: str = None, end: str = None,
     except ValueError:
         raise ValueError("Incorrect data format")
 
-    if reference is not None:
+    if reference:
         try:
             reference_date = dt.datetime.strptime(reference, format)
         except ValueError:
@@ -28,14 +28,14 @@ def get_period_start_end(period: str = None, start: str = None, end: str = None,
     else:
         reference_date = dt.datetime.today()
 
-    if (start is not None and end is None):
+    if (start and not end):
         try:
             start_report_date = dt.datetime.strptime(start, format)
         except ValueError:
             raise ValueError("Incorrect data format, should be YYYY-MM-DD")
         end_report_date = reference_date.replace(hour=23, minute=59, second=59)
 
-    elif (start is not None and end is not None):
+    elif (start and end):
         try:
             start_report_date = dt.datetime.strptime(start, format)
             end_report_date = dt.datetime.strptime(end, format).replace(hour=23, minute=59, second=59)
