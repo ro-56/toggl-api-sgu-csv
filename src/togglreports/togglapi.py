@@ -50,7 +50,10 @@ def get_detailed_report(api_token: str, workspace_id: int, user_agent: str = 're
     url = 'https://api.track.toggl.com/reports/api/v2/details'
 
     # Get report horizon
-    start_report_date, end_report_date = utils.get_period_start_end(period=kwargs.get('period', None), start=kwargs.get('start', None))
+    start_report_date, end_report_date = utils.get_period_start_end(
+        period=kwargs.get('period', None),
+        start=kwargs.get('start', None),
+        end=kwargs.get('end', None))
 
     # Make request
     payload = {
