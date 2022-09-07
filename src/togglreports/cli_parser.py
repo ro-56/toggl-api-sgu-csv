@@ -1,5 +1,5 @@
 """ Create a parser for the command line arguments """
-from argparse import ArgumentParser
+from argparse import ArgumentParser, Namespace
 
 from togglreports.core import report_factory
 from togglreports import build
@@ -9,16 +9,23 @@ from togglreports import utils
 
 def process_arguments(parser: ArgumentParser) -> None:
     """ Process the parser """
-    args = parser.parse_args()
+    args = _parse_args(parser)
     if args.cmd == 'build':
-        if (args.start is None and args.end is not None):
-            parser.error("argument -e/--end requires argument -s/--start")
         build.build_report(args.type, period=args.period, start=args.start, end=args.end)
     elif args.cmd == 'config':
         config.init_config()
     else:
         parser.print_help()
         exit(1)
+
+
+def _parse_args(parser: ArgumentParser, args: list = None) -> Namespace:
+    args = parser.parse_args(args)
+
+    if (args.cmd == 'build' and (args.start is None and args.end is not None)):
+        parser.error("argument -e/--end requires argument -s/--start")
+
+    return args
 
 
 def create_parser() -> ArgumentParser:

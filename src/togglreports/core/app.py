@@ -22,7 +22,7 @@ class Application():
         self._parser = cli_parser.create_parser()
         if not self._parser:
             raise Exception('Parser not initialized')
-        
+
         # Check parser for the --help command
         # Prints the help section and exits if --help was used
         self._parser.parse_args()
@@ -30,7 +30,6 @@ class Application():
         # Initialize the configuration if it's not present
         if not config.config_exists():
             config.init_config()
-
 
     def _load_plugins(self):
         plugin_loader.load_plugins()
