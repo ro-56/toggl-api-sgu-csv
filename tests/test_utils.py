@@ -1,7 +1,7 @@
 import datetime as dt
 import pytest
 
-import src.togglreports.utils as tr_utils
+import togglreports.utils as tr_utils
 
 
 class TestUtils:

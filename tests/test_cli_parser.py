@@ -1,7 +1,7 @@
 import pytest
 
-import src.togglreports.cli_parser as cli
-import src.togglreports.core.app as app
+import togglreports.cli_parser as cli
+import togglreports.core.app as app
 
 
 @pytest.fixture()
