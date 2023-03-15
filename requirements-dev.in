@@ -1,0 +1,5 @@
+-r requirements.txt
+-c requirements.txt
+
+pytest >= 6.2
+flake8 >= 3.9
