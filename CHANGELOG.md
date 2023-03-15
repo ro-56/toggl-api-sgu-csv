@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.3.2 (2023-03-15)
+### Fix
+* Ajusta formatação de horário para considerar diferentes fusos horários ([`06ccbaa`](https://github.com/ro-56/togglReports/commit/06ccbaa34fea55df24d5345593b0fcd4e55e06e1))
+
 ## v2.3.1 (2022-09-07)
 ### Fix
 * Ajusta api para argumento "-e" ([`e1c236e`](https://github.com/ro-56/togglReports/commit/e1c236ec8599f64e08e48e6042cdad7141ca2d89))
