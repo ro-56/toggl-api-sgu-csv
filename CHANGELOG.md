@@ -2,6 +2,13 @@
 
 <!--next-version-placeholder-->
 
+## v2.4.0 (2023-03-15)
+### Feature
+* Atualiza relatório sgu para exportar no formato atualizado ([`c74a034`](https://github.com/ro-56/togglReports/commit/c74a034fa65db55413de0390d18003cb2da11627))
+
+### Fix
+* Ajusta definição metadata do projeto ([`965925d`](https://github.com/ro-56/togglReports/commit/965925d0222710ba17c76f27e8f552a44f5105f7))
+
 ## v2.3.4 (2023-03-15)
 ### Fix
 * Ajusta setup ([`3cadc8b`](https://github.com/ro-56/togglReports/commit/3cadc8b7c5dbf890798a95775f6d16c182ec2389))
