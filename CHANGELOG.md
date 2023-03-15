@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.3.4 (2023-03-15)
+### Fix
+* Ajusta setup ([`3cadc8b`](https://github.com/ro-56/togglReports/commit/3cadc8b7c5dbf890798a95775f6d16c182ec2389))
+
 ## v2.3.3 (2023-03-15)
 ### Fix
 * Ajusta requirements ([`8ccb103`](https://github.com/ro-56/togglReports/commit/8ccb103802e61e1a0df924ecefa5349c5f16619c))
