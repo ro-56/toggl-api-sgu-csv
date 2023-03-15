@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.5.0 (2023-03-15)
+### Feature
+* Atualiza relatório sgu para exportar no formato atualizado ([`08a382f`](https://github.com/ro-56/togglReports/commit/08a382fe20afec0693eb41656eb0c4ef0bbb0ab2))
+
 
 ## v2.4.5 (2023-03-15)
 ### Feature
