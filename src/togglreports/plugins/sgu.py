@@ -56,7 +56,7 @@ class SGUReport():
                 categ = default_tag
 
             processed_data.append({
-                'DATA': dt.datetime.strptime(entry['start'], "%Y-%m-%dT%H:%M:%S-03:00").strftime("%d/%m/%Y"),
+                'DATA': dt.datetime.fromisoformat(entry['start']).strftime("%d/%m/%Y"),
                 'PROJETO': entry['project'],
                 'CATEGORIA': categ,
                 'ATIVIDADE': entry['description'][:self._max_num_chars],
