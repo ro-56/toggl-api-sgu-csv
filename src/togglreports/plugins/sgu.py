@@ -60,7 +60,7 @@ class SGUReport():
                 'PROJETO': entry['project'],
                 'CATEGORIA': categ,
                 'ATIVIDADE': entry['description'][:self._max_num_chars],
-                'CARD_KEY': '',
+                'OPORTUNIDADE': '',
                 'HORAS': str(float(entry['dur']) / 3600000).replace('.', ','),
                 'USERNAME': username
             })
