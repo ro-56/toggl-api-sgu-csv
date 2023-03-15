@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.3.3 (2023-03-15)
+### Fix
+* Ajusta requirements ([`8ccb103`](https://github.com/ro-56/togglReports/commit/8ccb103802e61e1a0df924ecefa5349c5f16619c))
+
 ## v2.3.2 (2023-03-15)
 ### Fix
 * Ajusta formatação de horário para considerar diferentes fusos horários ([`06ccbaa`](https://github.com/ro-56/togglReports/commit/06ccbaa34fea55df24d5345593b0fcd4e55e06e1))
