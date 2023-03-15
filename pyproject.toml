@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "togglreports"
+authors = [
+    {name = "Rodrigo Mendonça", email = "rodrigogr.mendonca@gmail.com"},
+]
+description = "A simple project to automate the creation of reports using the Toggl API."
+readme = "README.md"
+requires-python = ">=3.9"
+dynamic = ["version", "dependencies"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+]
+license = {file = "LICENSE"}
+
+[project.urls]
+repository = "https://github.com/ro-56/togglReports.git"
+changelog = "https://github.com/ro-56/togglReports/blob/main/CHANGELOG.md"
+
+[project.scripts]
+togglReports = "togglreports.main:main"
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+exclude = ["tests*","*.egg-info", "build*", "dist*", "docs*", ".venv/*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "togglreports.__version__"}
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools]
+include-package-data = true
+
+
+[tool.semantic_release]
+version_variable = "src/togglreports/__init__.py:__version__"
+version_source = "tag"
+commit_changes = true
+branch = "main"
+upload_to_PyPI = true
+upload_to_release = true
+commit_version_number = true
+
+
+
+
+
