@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.4.5 (2023-03-15)
+### Fix
+* Deployment ([`1a19f8c`](https://github.com/ro-56/togglReports/commit/1a19f8c5e776984ee0374bd223f97a68f34896cf))
+
 ## v2.4.4 (2023-03-15)
 ### Fix
 * Deployment ([`4acbba9`](https://github.com/ro-56/togglReports/commit/4acbba940b3453f4052bedb0d8e4f599cfb45e47))
