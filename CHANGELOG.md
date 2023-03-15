@@ -2,42 +2,12 @@
 
 <!--next-version-placeholder-->
 
+
 ## v2.4.5 (2023-03-15)
-### Fix
-* Deployment ([`1a19f8c`](https://github.com/ro-56/togglReports/commit/1a19f8c5e776984ee0374bd223f97a68f34896cf))
-
-## v2.4.4 (2023-03-15)
-### Fix
-* Deployment ([`4acbba9`](https://github.com/ro-56/togglReports/commit/4acbba940b3453f4052bedb0d8e4f599cfb45e47))
-
-## v2.4.3 (2023-03-15)
-### Fix
-* Deployment ([`6663b1d`](https://github.com/ro-56/togglReports/commit/6663b1d56516e7f4b86b645458f55da610d386ff))
-
-## v2.4.2 (2023-03-15)
-### Fix
-* Deployment ([`ab32e06`](https://github.com/ro-56/togglReports/commit/ab32e069524c7bc7f7241bffec5105787843e9b0))
-
-## v2.4.1 (2023-03-15)
-### Fix
-* Setup ([`7810605`](https://github.com/ro-56/togglReports/commit/78106051e5f9932e62e496ad574e529d350566f5))
-
-## v2.4.0 (2023-03-15)
 ### Feature
 * Atualiza relatório sgu para exportar no formato atualizado ([`c74a034`](https://github.com/ro-56/togglReports/commit/c74a034fa65db55413de0390d18003cb2da11627))
 
-### Fix
-* Ajusta definição metadata do projeto ([`965925d`](https://github.com/ro-56/togglReports/commit/965925d0222710ba17c76f27e8f552a44f5105f7))
-
 ## v2.3.4 (2023-03-15)
-### Fix
-* Ajusta setup ([`3cadc8b`](https://github.com/ro-56/togglReports/commit/3cadc8b7c5dbf890798a95775f6d16c182ec2389))
-
-## v2.3.3 (2023-03-15)
-### Fix
-* Ajusta requirements ([`8ccb103`](https://github.com/ro-56/togglReports/commit/8ccb103802e61e1a0df924ecefa5349c5f16619c))
-
-## v2.3.2 (2023-03-15)
 ### Fix
 * Ajusta formatação de horário para considerar diferentes fusos horários ([`06ccbaa`](https://github.com/ro-56/togglReports/commit/06ccbaa34fea55df24d5345593b0fcd4e55e06e1))
 
