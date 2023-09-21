@@ -41,7 +41,10 @@ The `--period` tag can be used to build reports with common start and end times.
  - `lastweek`: entries from past week, from sunday to saturday
  - `thismonth`: entries from the first day to the last day of this month
 
-The `--start` and `--end` tags can be used to define a specific time frame. The generated report will contain entries from the specified `--start` date, to the specified `--end` date. 
+The `--start` and `--end` tags can be used to define a specific time frame. Expects `YYYY-MM-DD` format, e.g. 2023-10-30. 
+
+The generated report will contain entries from the specified `--start` date, to the specified `--end` date.
+
 
 The `--end` tag is optional. If not specified, today's date will be used.
 
