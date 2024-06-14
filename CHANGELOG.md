@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.5.1 (2024-05-07)
+### Fix
+* Changes default encoding to Windows 1252 ([#63](https://github.com/ro-56/togglReports/issues/63)) ([`875b335`](https://github.com/ro-56/togglReports/commit/875b3355460cfe51d4cdb08d983c8de65ef85e7e))
+
 ## v2.5.0 (2023-03-15)
 ### Feature
 * Atualiza relatório sgu para exportar no formato atualizado ([`08a382f`](https://github.com/ro-56/togglReports/commit/08a382fe20afec0693eb41656eb0c4ef0bbb0ab2))
