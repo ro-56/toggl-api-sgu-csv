@@ -14,7 +14,7 @@ class SGUReport():
 
     _default_filename: str = 'SGU_report'
     _file_format: str = 'csv'
-    _file_encoding: str = 'ansi'
+    _file_encoding: str = 'cp1252'
     _separator: str = ';'
 
     _default_ignore_tag: str = '<IGNORE>'
