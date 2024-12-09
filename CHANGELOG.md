@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.6.0 (2024-12-09)
+### Feature
+* Groups tasks with the same name ([`acc2a01`](https://github.com/ro-56/togglReports/commit/acc2a01099cf44048b4d4f5007feccba43cd28be))
+
 ## v2.5.1 (2024-05-07)
 ### Fix
 * Changes default encoding to Windows 1252 ([#63](https://github.com/ro-56/togglReports/issues/63)) ([`875b335`](https://github.com/ro-56/togglReports/commit/875b3355460cfe51d4cdb08d983c8de65ef85e7e))
